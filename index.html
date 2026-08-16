@@ -15,8 +15,14 @@
       <ul class="header__nav-list">
         <li><a href="#about">About</a></li>
         <li><a href="#bicycle">Bicycle</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
+    <button class="header__hamburger" data-role="hamburger" aria-label="メニュー">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 
@@ -39,21 +45,51 @@
 
 <section class="bicycle" id="bicycle">
   <h2 class="section-title">Bicycle</h2>
+  <div class="bicycle__tabs">
+    <button class="bicycle__tab is-active" data-category="all">すべて</button>
+    <button class="bicycle__tab" data-category="road">ロード</button>
+    <button class="bicycle__tab" data-category="cross">クロス</button>
+  </div>
+  <input type="text" class="bicycle__search" data-role="bicycle-search" placeholder="タイトルで検索">
   <ul class="bicycle__list">
-    <li class="bicycle__item">
+    <li class="bicycle__item" data-title="bicycle1" data-category="road">
       <img src="images/bicycle1.jpg" alt="タイトルタイトル" class="bicycle__img">
       <p class="bicycle__title">タイトル</p>
       <p class="bicycle__text">ダミーの文章ダミーの文章ダミーの文章</p>
     </li>
-    <li class="bicycle__item">
+    <li class="bicycle__item" data-title="bicycle2" data-category="cross">
       <img src="images/bicycle2.jpg" alt="タイトルタイトル" class="bicycle__img">
       <p class="bicycle__title">タイトル</p>
       <p class="bicycle__text">ダミーの文章ダミーの文章ダミーの文章</p>
     </li>
-    <li class="bicycle__item">
+    <li class="bicycle__item" data-title="bicycle3" data-category="road">
       <img src="images/bicycle3.jpg" alt="タイトルタイトル" class="bicycle__img">
       <p class="bicycle__title">タイトル</p>
       <p class="bicycle__text">ダミーの文章ダミーの文章ダミーの文章</p>
+    </li>
+  </ul>
+</section>
+
+<section class="faq" id="faq">
+  <h2 class="section-title">FAQ</h2>
+  <ul class="faq__list">
+    <li class="faq__item">
+      <button class="faq__question" data-role="faq-toggle">ダミーの質問文その1ですか？</button>
+      <div class="faq__answer">
+        <p>ダミーの回答文ダミーの回答文ダミーの回答文</p>
+      </div>
+    </li>
+    <li class="faq__item">
+      <button class="faq__question" data-role="faq-toggle">ダミーの質問文その2ですか？</button>
+      <div class="faq__answer">
+        <p>ダミーの回答文ダミーの回答文ダミーの回答文</p>
+      </div>
+    </li>
+    <li class="faq__item">
+      <button class="faq__question" data-role="faq-toggle">ダミーの質問文その3ですか？</button>
+      <div class="faq__answer">
+        <p>ダミーの回答文ダミーの回答文ダミーの回答文</p>
+      </div>
     </li>
   </ul>
 </section>
@@ -62,5 +98,14 @@
   <p>&copy; 2026 Profile</p>
 </footer>
 
+<div class="modal" data-role="modal">
+  <div class="modal__overlay" data-role="modal-close"></div>
+  <div class="modal__content">
+    <button class="modal__close" data-role="modal-close" aria-label="閉じる">&times;</button>
+    <img src="" alt="" class="modal__img" data-role="modal-img">
+  </div>
+</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>

@@ -26,11 +26,17 @@ a {
 
 /* ---------- Header ---------- */
 .header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
   height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 40px;
+  background-color: #fff;
 }
 
 .header__inner {
@@ -62,9 +68,55 @@ a {
   font-size: 15px;
 }
 
+/* JSでスクロール時に付与するクラス */
+.header.is-scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* JSでロゴクリック時に付与するクラス */
+.header__logo.is-active {
+  background-color: #ff5a5f;
+}
+
+/* ---------- Hamburger (PCでは非表示) ---------- */
+.header__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.header__hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #333;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* JSでハンバーガークリック時に付与するクラス：3本線を×に変形 */
+.header__hamburger.is-open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.header__hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.header__hamburger.is-open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ---------- Hero ---------- */
 .hero {
   width: 100%;
+  margin-top: var(--header-height);
 }
 
 .hero__img {
@@ -120,6 +172,43 @@ a {
   padding: 0 40px;
 }
 
+.bicycle__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto 20px;
+}
+
+.bicycle__tab {
+  padding: 8px 20px;
+  font-size: 14px;
+  background: none;
+  border: 1px solid #333;
+  cursor: pointer;
+}
+
+/* JSでクリックされたタブに付与するクラス */
+.bicycle__tab.is-active {
+  background-color: #333;
+  color: #fff;
+}
+
+.bicycle__search {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+/* JSで絞り込みにマッチしなかった項目に付与するクラス */
+.bicycle__item.is-hidden {
+  display: none;
+}
+
 .bicycle__list {
   max-width: 1200px;
   margin: 0 auto;
@@ -153,6 +242,49 @@ a {
   font-size: 14px;
 }
 
+/* ---------- FAQ (アコーディオン) ---------- */
+.faq {
+  padding: 0 40px;
+}
+
+.faq__list {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  list-style: none;
+}
+
+.faq__item {
+  border-bottom: 1px solid #ccc;
+}
+
+.faq__question {
+  width: 100%;
+  text-align: left;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+/* JSで開いた質問に付与するクラス */
+.faq__item.is-open .faq__answer {
+  max-height: 200px;
+}
+
+.faq__answer p {
+  padding-bottom: 20px;
+  font-size: 14px;
+}
+
 /* ---------- Footer ---------- */
 .footer {
   background-color: #f7f7f7;
@@ -160,6 +292,58 @@ a {
   padding: 20px;
   font-size: 13px;
   color: #888;
+}
+
+/* ---------- Modal ---------- */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+}
+
+/* JSで画像クリック時に付与するクラス */
+.modal.is-open {
+  display: flex;
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal__content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+}
+
+.modal__close {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  font-size: 28px;
+  line-height: 1;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__img {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  cursor: default;
 }
 
 /* ---------- SP (スマートフォン対応) ---------- */
@@ -177,8 +361,35 @@ a {
     padding: 8px 14px;
   }
 
+  .header__hamburger {
+    display: flex;
+  }
+
+  .header__nav {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: max-height 0.3s ease;
+  }
+
+  /* JSでハンバーガークリック時に付与するクラス */
+  .header__nav.is-open {
+    max-height: 300px;
+  }
+
+  .header__nav-list {
+    flex-direction: column;
+    padding: 20px;
+  }
+
   .header__nav-list li {
-    margin-left: 16px;
+    margin-left: 0;
+    margin-bottom: 16px;
   }
 
   .header__nav-list a {
@@ -206,6 +417,10 @@ a {
   }
 
   .bicycle {
+    padding: 0 20px;
+  }
+
+  .faq {
     padding: 0 20px;
   }
 
