@@ -1,0 +1,12 @@
+{
+  "name": "curriculum",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "sass:build": "sass scss/style.scss css/style.css --no-source-map",
+    "sass:watch": "sass --watch scss/style.scss:css/style.css --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.102.0"
+  }
+}

@@ -1,0 +1,52 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  @include flex-center;
+
+  // JSで画像クリック時に付与するクラス
+  &.is-open {
+    display: flex;
+  }
+}
+
+.modal__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-overlay;
+}
+
+.modal__content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90vh;
+}
+
+.modal__close {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  font-size: 28px;
+  line-height: 1;
+  color: $color-white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__img {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+  cursor: default;
+}

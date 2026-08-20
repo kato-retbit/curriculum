@@ -1,0 +1,19 @@
+@use "variables" as *;
+
+// 汎用のカードコンポーネント。画像＋本文を持つ要素に共通の「箱の見た目」を与える
+.card {
+  background-color: $color-white;
+  border-radius: 8px;
+  overflow: hidden; // 角丸からはみ出す子要素（画像など）をここで切り取る
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.card__body {
+  padding: 16px;
+}
