@@ -1,0 +1,46 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --header-height: 94px;
+
+  @include sp {
+    --header-height: 73px;
+  }
+}
+
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", Arial, sans-serif;
+  color: $color-text;
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: $color-text;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $color-text;
+  display: table;
+  margin: 80px auto 50px;
+
+  @include sp {
+    font-size: 26px;
+    margin: 50px auto 30px;
+  }
+}

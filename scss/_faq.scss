@@ -1,0 +1,48 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.faq {
+  padding: 0 $spacing-pc;
+
+  @include sp {
+    padding: 0 $spacing-sp;
+  }
+}
+
+.faq__list {
+  max-width: 700px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  list-style: none;
+}
+
+.faq__item {
+  border-bottom: 1px solid $color-border;
+
+  // JSで開いた質問に付与するクラス
+  &.is-open .faq__answer {
+    max-height: 200px;
+  }
+}
+
+.faq__question {
+  width: 100%;
+  text-align: left;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  p {
+    padding-bottom: 20px;
+    font-size: 14px;
+  }
+}

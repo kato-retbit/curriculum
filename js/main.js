@@ -146,3 +146,13 @@ document.addEventListener("keydown", (event) => {
     modal.classList.remove("is-open");
   }
 });
+
+
+// ===== TOPへ戻るボタン（footerコンポーネント内のbtn） =====
+const backToTop = document.querySelector('[data-role="back-to-top"]');
+
+backToTop.addEventListener("click", (event) => {
+  // href="#" のデフォルト動作（ページ末尾へのジャンプ）を止める
+  event.preventDefault();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

@@ -1,0 +1,11 @@
+// このファイルが起点。@use で各partial（_から始まるファイル）を読み込んでいく
+@use "base";
+@use "button";
+@use "card";
+@use "header";
+@use "hero";
+@use "about";
+@use "bicycle";
+@use "faq";
+@use "footer";
+@use "modal";
