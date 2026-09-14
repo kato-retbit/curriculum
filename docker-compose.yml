@@ -1,0 +1,40 @@
+services:
+  php:
+    build: .
+    container_name: curriculum-php
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:8000"
+    command: php -S 0.0.0.0:8000 -t public
+    depends_on:
+      - mysql
+
+  laravel:
+    build: .
+    container_name: curriculum-laravel
+    working_dir: /var/www/html/laravel-app
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8001:8001"
+    command: php artisan serve --host=0.0.0.0 --port=8001
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    container_name: curriculum-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: curriculum
+      MYSQL_USER: curriculum
+      MYSQL_PASSWORD: curriculum
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
